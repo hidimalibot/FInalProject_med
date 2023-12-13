@@ -223,12 +223,12 @@ router.post("/check-booking-avilability", authMiddleware, async (req, res) => {
     });
     if (appointments.length > 0) {
       return res.status(200).send({
-        message: "Appointment Schedule Available",
+        message: "Appointment Schedule Unavailable",
         success: false,
       });
     } else {
       return res.status(200).send({
-        message: "Appointment Schedule Unavailable",
+        message: "Appointment Schedule Available",
         success: true,
       });
     }

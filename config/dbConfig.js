@@ -1,19 +1,12 @@
 const mongoose = require("mongoose");
+const colors = require("colors");
 
 const connectDB = async () => {
   try {
-    await mongoose.connect(process.env.MONGO_URL, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      // Remove the deprecated options below
-      // useCreateIndex: true,
-      // useFindAndModify: false,
-    });
-
-    console.log("MongoDB connection is successful");
+    await mongoose.connect(process.env.MONGO_URL);
+    console.log(`Mongodb connected ${mongoose.connection.host}`.bgGreen.white);
   } catch (error) {
-    console.error("Error in MongoDB connection", error);
-    process.exit(1); // Exit the process if unable to connect to MongoDB
+    console.log(`Mongodb Server Issue ${error}`.bgRed.white);
   }
 };
 
